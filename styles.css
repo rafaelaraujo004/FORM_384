@@ -1,3 +1,79 @@
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: .7rem .7rem;
+    text-align: left;
+  }
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+  .pwa-actions {
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    align-items: stretch;
+    margin-top: .5rem;
+  }
+  .btn, .btn-outline, .btn-danger {
+    width: 100%;
+    font-size: 1rem;
+    padding: .7rem 0;
+  }
+  main {
+    padding: 0 .2rem;
+    margin: 0;
+  }
+  .card {
+    padding: .7rem .3rem;
+    margin-bottom: .7rem;
+  }
+  .grid, .g2, .g4 {
+    display: block;
+  }
+  .g4 > label, .g2 > label {
+    width: 100%;
+    margin-bottom: .7rem;
+  }
+  .check-table, .check-table thead, .check-table tbody, .check-table tr, .check-table th, .check-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .check-table th, .check-table td {
+    text-align: left;
+    padding: .5rem .3rem;
+    font-size: 1rem;
+    border-left: none;
+    border-right: none;
+  }
+  .check-table thead {
+    display: none;
+  }
+  .check-table tr {
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #e5e7eb;
+    background: #f8fafc;
+    border-radius: .5rem;
+    box-shadow: 0 1px 4px #0001;
+    padding: .5rem 0;
+  }
+  .fotos-grid {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+  .fotos-grid img {
+    height: 100px;
+  }
+  .levels-grid, .level {
+    display: block;
+  }
+  .level > * {
+    margin-bottom: .5rem;
+  }
+}
 .check-table td:not(.w10):not(.w40) {
   text-align: center;
 }
