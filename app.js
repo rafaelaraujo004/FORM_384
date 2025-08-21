@@ -362,6 +362,15 @@ document.getElementById('exportPdfBtn')?.addEventListener('click', () => {
 document.getElementById('limparBtn')?.addEventListener('click', () => {
   if (confirm('Limpar todos os dados preenchidos?')) {
     localStorage.removeItem(MODEL_KEY);
+    // Limpa as assinaturas dos canvas
+    const canvasIds = ['signEnvio', 'signReceb'];
+    canvasIds.forEach(id => {
+      const canvas = document.getElementById(id);
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
     location.reload();
   }
 });

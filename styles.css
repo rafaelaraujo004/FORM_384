@@ -1,25 +1,75 @@
+.check-table td:not(.w10):not(.w40) {
+  text-align: center;
+}
+/* Descrições das atividades maiores */
+.check-table td:not(.w10):not(.w40) {
+  font-size: 1.08rem;
+  line-height: 1.5;
+  padding-top: .7rem;
+  padding-bottom: .7rem;
+}
+/* Alinhar vertical e horizontalmente radios e textos nas colunas OK/NOK/NA */
+.check-table td.w10 {
+  padding: 0;
+}
+.check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  min-height: 48px;
+}
+.check label {
+  flex-direction: row;
+  align-items: center;
+  gap: .18rem;
+  font-weight: 400;
+  font-size: .95rem;
+}
+/* Alinhamento centralizado para colunas OK/NOK/NA */
+.check-table td.w10, .check-table th.w10 {
+  text-align: center;
+  vertical-align: middle;
+}
+/* Novos detalhes visuais */
+::-webkit-scrollbar { width: 8px; background: #e0e7ef; }
+::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 8px; }
+
+@media (max-width: 600px) {
+  .app-header { flex-direction: column; align-items: flex-start; padding: .7rem .7rem; }
+  .brand { gap: .7rem; }
+  main { padding: 0 .3rem; }
+  .card { padding: .7rem .5rem; }
+  .btn { font-size: .95rem; padding: .45rem .7rem; }
+}
 /* Reset básico */
 * { box-sizing: border-box; }
 html, body { background:#ffffff; color:#111827; font-family: Arial, Helvetica, sans-serif; }
 body { background:#ffffff; color:#111827; font-family: Arial, Helvetica, sans-serif; }
 h1,h2,h3 { margin: 0 0 .5rem 0; }
 h2 { font-size: 1.1rem; letter-spacing:.3px; }
-h3 { font-size: 1rem; color:#0b5aa3 }
+h3 { font-size: 1rem; }
 
-.app-header { background:#ffffff; border-bottom: 2px solid #0b5aa3; color:#0b5aa3;
+.app-header { background:#ffffff; border-bottom: 2px solid #19502f; color:#fff;
+.app-header h1, .app-header p, .app-header * { color: #fff !important; }
   position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
-  padding: .75rem 1rem; background: #0b5aa3; border-bottom: 1px solid #0ea5e9;
+  padding: 1.2rem 2rem 1.2rem 1.2rem;
+  background: #19502f;
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(11,90,163,0.08);
+  border-bottom: 2px solid #0ea5e9;
 }
 .brand { display:flex; gap:.75rem; align-items:center; }
 .logo { width:40px; height:40px; object-fit:contain; filter: drop-shadow(0 0 1px #000); }
 .muted { opacity:.85; }
 
 .pwa-actions { display:flex; gap:.5rem; }
-.btn { background:#1d4ed8; color:white; border:none; padding:.5rem .75rem; border-radius:.5rem; cursor:pointer; }
+.btn { background:#ffffff; color:rgb(0, 0, 0); border:none; padding:.5rem .75rem; border-radius:.5rem; cursor:pointer; }
 .btn:hover { filter:brightness(1.05); }
 .btn-outline { background:transparent; border:1px solid #60a5fa; color:#e2e8f0; }
-.btn-danger { background:#b91c1c; }
+.btn-danger { background:#ffffff; }
 
 main { max-width: 1100px; margin: 1rem auto 4rem; padding: 0 1rem; }
 
@@ -33,7 +83,19 @@ main { max-width: 1100px; margin: 1rem auto 4rem; padding: 0 1rem; }
 
 label { display:flex; flex-direction:column; gap:.35rem; font-size:.9rem; }
 input[type="text"], input[type="number"], input[type="date"], textarea, select {
-  background:#ffffff; color:#111827; border:1px solid #cbd5e1; border-radius:.5rem; padding:.5rem;
+  background: #f1f5f9;
+  color: #0b223a;
+  border: 1.5px solid #60a5fa;
+  border-radius: .6rem;
+  padding: .6rem .9rem;
+  font-size: 1rem;
+  transition: border .15s, box-shadow .15s;
+  box-shadow: 0 1px 4px 0 #0ea5e91a;
+}
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+  border: 2px solid #0b5aa3;
+  outline: none;
+  box-shadow: 0 2px 8px 0 #0ea5e933;
 }
 
 .table-wrap { overflow:auto; border-radius:.5rem; }
@@ -41,7 +103,7 @@ input[type="text"], input[type="number"], input[type="date"], textarea, select {
 .check-table th, .check-table td { border:1px solid #334155; padding:.5rem; font-size:.9rem; }
 .check-table thead th { background:#e5e7eb; text-align:left; }
 .w10 { width:10ch; text-align:center; }
-.w40 { width:40ch; }
+.w40 { width:18ch; }
 
 .check { display:flex; gap:.35rem; align-items:center; justify-content:center; }
 .check label { flex-direction:row; align-items:center; gap:.25rem; }
