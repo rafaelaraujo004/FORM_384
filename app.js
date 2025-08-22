@@ -246,10 +246,20 @@ function renderTables() {
   });
 }
 function opts(sel){ return ['Completo','Parcial','Drenado','N/A'].map(v=>`<option ${sel===v?'selected':''}>${v}</option>`).join(''); }
-function radioGroup(name, sel){
-  return ['OK','NOK','N/A'].map(v=>`
+
+function radioGroup(name, sel) {
+  // Se for pneus, usa apenas Sim/Não
+  if (name.startsWith('pneus.')) {
+    return ['Sim', 'Não'].map(v => `
+      <div class="check">
+        <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
+        <label for="${name}-${v}">${v}</label>
+      </div>`).join('');
+  }
+  // Demais seções continuam com OK/NOK/N/A
+  return ['OK', 'NOK', 'N/A'].map(v => `
     <div class="check">
-      <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v?'checked':''}>
+      <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
       <label for="${name}-${v}">${v}</label>
     </div>`).join('');
 }
