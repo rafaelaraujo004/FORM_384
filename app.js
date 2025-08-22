@@ -213,12 +213,12 @@ function renderTables() {
       const tr = document.createElement('tr');
       const id = `${key}.${idx}`;
       tr.innerHTML = `
-        <td class="w40">${String(idx+1).padStart(2,'0')}</td>
-        <td>${desc}</td>
-        <td class="w10">
+        <td style="width:12px;max-width:12px;padding:1px 2px;text-align:center;">${String(idx+1).padStart(2,'0')}</td>
+  <td style="width:40px;max-width:60px;padding:1px 2px;">${desc}</td>
+        <td style="width:40px;max-width:60px;padding:1px 2px;">
           ${radioGroup(`${id}.envio`, model?.[key]?.[idx]?.envio ?? '')}
         </td>
-        <td class="w10">
+        <td style="width:40px;max-width:60px;padding:1px 2px;">
           ${radioGroup(`${id}.receb`, model?.[key]?.[idx]?.receb ?? '')}
         </td>`;
       tbody.appendChild(tr);
@@ -250,7 +250,7 @@ function opts(sel){ return ['Completo','Parcial','Drenado','N/A'].map(v=>`<optio
 function radioGroup(name, sel) {
   // Se for pneus, usa apenas Sim/Não
   if (name.startsWith('pneus.')) {
-    return ['Sim', 'Não'].map(v => `
+    return ['Sim', 'Não', 'OK', 'NOK'].map(v => `
       <div class="check">
         <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
         <label for="${name}-${v}">${v}</label>
