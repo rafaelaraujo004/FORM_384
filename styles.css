@@ -1,3 +1,30 @@
+.check-table td:not(.w10):not(.w40), .check-table th:not(.w10):not(.w40) {
+  max-width: 340px;
+  min-width: 120px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .check-table td:not(.w10):not(.w40), .check-table th:not(.w10):not(.w40) {
+    max-width: 200px;
+    min-width: 80px;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: left;
+  }
+}
+.radio-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .35rem;
+  font-weight: 400;
+  font-size: .95rem;
+  justify-content: flex-start;
+  cursor: pointer;
+}
 /* Centralizar títulos das seções */
 .card > h2, .card > h3 {
   text-align: center;
@@ -120,9 +147,15 @@
 .check label {
   flex-direction: row;
   align-items: center;
-  gap: .18rem;
+  gap: .35rem;
   font-weight: 400;
   font-size: .95rem;
+  justify-content: flex-start;
+}
+
+/* Garante que o input radio fique sempre à esquerda do texto */
+.check label {
+  flex-direction: row-reverse;
 }
 /* Alinhamento centralizado para colunas OK/NOK/NA */
 .check-table td.w10, .check-table th.w10 {

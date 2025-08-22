@@ -252,15 +252,19 @@ function radioGroup(name, sel) {
   if (name.startsWith('pneus.')) {
     return ['Sim', 'Não', 'OK', 'NOK'].map(v => `
       <div class="check">
-        <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
-        <label for="${name}-${v}">${v}</label>
+        <label class="radio-label">
+          <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
+          <span>${v}</span>
+        </label>
       </div>`).join('');
   }
   // Demais seções continuam com OK/NOK/N/A
   return ['OK', 'NOK', 'N/A'].map(v => `
     <div class="check">
-      <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
-      <label for="${name}-${v}">${v}</label>
+      <label class="radio-label">
+        <input type="radio" id="${name}-${v}" name="${name}" value="${v}" ${sel===v ? 'checked' : ''}>
+        <span>${v}</span>
+      </label>
     </div>`).join('');
 }
 
