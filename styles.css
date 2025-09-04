@@ -1,256 +1,1043 @@
-.check-table td:not(.w10):not(.w40), .check-table th:not(.w10):not(.w40) {
-  max-width: 340px;
-  min-width: 120px;
-  padding-left: 24px;
-  padding-right: 24px;
-  text-align: left;
-}
-
-@media (max-width: 600px) {
-  .check-table td:not(.w10):not(.w40), .check-table th:not(.w10):not(.w40) {
-    max-width: 200px;
-    min-width: 80px;
-    padding-left: 12px;
-    padding-right: 12px;
-    text-align: left;
-  }
-}
-.radio-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: .35rem;
-  font-weight: 400;
-  font-size: .95rem;
-  justify-content: flex-start;
-  cursor: pointer;
-}
-/* Centralizar títulos das seções */
-.card > h2, .card > h3 {
-  text-align: center;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-/* Garantir que descrições caibam nos quadrantes no mobile */
-@media (max-width: 600px) {
-  .check-table td:not(.w10):not(.w40), .check-table th:not(.w10):not(.w40) {
-    max-width: 120px;
-    word-break: break-word;
-    white-space: normal;
-    text-align: left;
-    font-size: .98rem;
-    padding-left: 4px;
-    padding-right: 4px;
-    line-height: 1.3;
-    vertical-align: middle;
-  }
-}
-.check-table td.w40, .check-table th.w40 {
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  min-width: 0 !important;
-  width: 1.5em !important;
-  max-width: 2.5em !important;
-  text-align: center;
-  vertical-align: middle;
-}
-/* Responsividade aprimorada para mobile */
-@media (max-width: 600px) {
-  html, body {
-    font-size: 15px;
-    padding: 0;
+/* Reset e Base */
+* {
     margin: 0;
-  }
-  .app-header {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 210mm; /* Tamanho A4 */
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 297mm; /* Altura A4 */
+    overflow: hidden;
+}
+
+/* Cabeçalho exato como no formulário original */
+.form-header {
+    display: grid;
+    grid-template-columns: 100px 1fr 120px;
+    border: 2px solid #000;
+    background: white;
+    align-items: center;
+    height: 80px;
+}
+
+.logo-section {
+    border-right: 2px solid #000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+}
+
+.logo-section {
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #000;
+    height: 100%;
+    min-width: 80px;
+}
+
+.logo-um {
+    background-color: #006633;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.title-section {
+    padding: 0 20px;
+    text-align: center;
+    border-right: 2px solid #000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-section h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.form-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.form-number {
+    border-bottom: 1px solid #000;
+    padding: 2px 10px;
+    margin-bottom: 2px;
+}
+
+.revision {
+    border-bottom: 1px solid #000;
+    padding: 2px 10px;
+    margin-bottom: 2px;
+}
+
+.status {
+    padding: 2px 10px;
+}
+
+/* Seção de informações básicas */
+.info-section {
+    border: 2px solid #000;
+    border-top: none;
+    padding: 0;
+}
+
+.info-row {
+    display: flex;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    overflow: hidden;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-field {
+    border-right: 1px solid #000;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+.info-field:last-child {
+    border-right: none;
+}
+
+.info-field.wide {
+    flex: 1;
+}
+
+.info-field:not(.wide) {
+    width: 25%;
+    max-width: 25%;
+}
+
+.info-field label {
+    font-weight: bold;
+    font-size: 11px;
+    margin-right: 8px;
+    min-width: fit-content;
+    color: #000;
+    white-space: nowrap;
+}
+
+.info-field input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 11px;
+    flex: 1;
+    padding: 2px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-field input:focus {
+    background-color: #e6f3ff;
+}
+
+/* Dica de formato para TAG */
+.format-hint {
+    display: block;
+    font-size: 8px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.info-field input:invalid {
+    border: 1px solid #ff6b6b;
+    background-color: #ffe6e6;
+}
+
+.info-field input:valid {
+    border: 1px solid #51cf66;
+    background-color: #e6ffe6;
+}
+
+/* Campos numéricos */
+.info-field input[type="number"] {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Campos em maiúsculo */
+.info-field input[style*="text-transform: uppercase"] {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Campo TAG específico */
+.info-field.tag-field {
+    min-height: 55px;
     flex-direction: column;
     align-items: flex-start;
-    padding: .7rem .5rem;
-    font-size: 1rem;
-  }
-  .brand {
-    flex-direction: column;
-    gap: .3rem;
+    padding-bottom: 20px;
+}
+
+.tag-field input {
+    margin-top: 4px;
     width: 100%;
-  }
-  .pwa-actions {
-    width: 100%;
-    justify-content: flex-end;
-    margin-top: .5rem;
-  }
-  main {
-    padding: 0 .2rem;
+}
+
+/* Seções de Equipamento e Cabine */
+.equipment-section,
+.cabin-section {
+    border: 2px solid #000;
+    border-top: none;
     margin: 0;
-    max-width: 100vw;
-  }
-  .card {
-    padding: .6rem .3rem;
-    margin-bottom: .7rem;
-    border-radius: .5rem;
-  }
-  .grid.g4 {
-    grid-template-columns: 1fr;
-    gap: .5rem;
-  }
-  .check-table th, .check-table td {
-    padding: .25rem .2rem;
-    font-size: .92rem;
-  }
-  .check-table thead th {
-    font-size: .98rem;
-  }
-  .check-table {
-    font-size: .95rem;
-    min-width: 320px;
-  }
-  .fotos-grid img {
-    height: 80px;
-  }
-  .btn {
-    font-size: .95rem;
-    padding: .35rem .5rem;
-  }
-  .levels-grid, .level {
-    grid-template-columns: 1fr;
-    gap: .4rem;
-  }
-  .level {
-    grid-template-columns: 1fr;
-    gap: .3rem;
-  }
-  .sign {
-    padding: .5rem;
-  }
-}
-.check-table td:not(.w10):not(.w40) {
-  text-align: center;
-}
-/* Descrições das atividades maiores */
-.check-table td:not(.w10):not(.w40) {
-  font-size: 1.08rem;
-  line-height: 1.5;
-  padding-top: .7rem;
-  padding-bottom: .7rem;
-}
-/* Alinhar vertical e horizontalmente radios e textos nas colunas OK/NOK/NA */
-.check-table td.w10 {
-  padding: 0;
-}
-.check {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.05rem;
-  min-height: 48px;
-}
-.check label {
-  flex-direction: row;
-  align-items: center;
-  gap: .35rem;
-  font-weight: 400;
-  font-size: .95rem;
-  justify-content: flex-start;
 }
 
-/* Garante que o input radio fique sempre à esquerda do texto */
-.check label {
-  flex-direction: row-reverse;
-}
-/* Alinhamento centralizado para colunas OK/NOK/NA */
-.check-table td.w10, .check-table th.w10 {
-  text-align: center;
-  vertical-align: middle;
-}
-/* Novos detalhes visuais */
-::-webkit-scrollbar { width: 8px; background: #e0e7ef; }
-::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 8px; }
-
-@media (max-width: 600px) {
-  .app-header { flex-direction: column; align-items: flex-start; padding: .7rem .7rem; }
-  .brand { gap: .7rem; }
-  main { padding: 0 .3rem; }
-  .card { padding: .7rem .5rem; }
-  .btn { font-size: .95rem; padding: .45rem .7rem; }
-}
-/* Reset básico */
-* { box-sizing: border-box; }
-html, body { background:#ffffff; color:#111827; font-family: Arial, Helvetica, sans-serif; }
-body { background:#ffffff; color:#111827; font-family: Arial, Helvetica, sans-serif; }
-h1,h2,h3 { margin: 0 0 .5rem 0; }
-h2 { font-size: 1.1rem; letter-spacing:.3px; }
-h3 { font-size: 1rem; }
-
-.app-header { background:#ffffff; border-bottom: 2px solid #19502f; color:#fff;
-.app-header h1, .app-header p, .app-header * { color: #fff !important; }
-  position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 2rem 1.2rem 1.2rem;
-  background: #19502f;
-  color: #fff;
-  box-shadow: 0 2px 12px 0 rgba(11,90,163,0.08);
-  border-bottom: 2px solid #0ea5e9;
-}
-.brand { display:flex; gap:.75rem; align-items:center; }
-.logo { width:40px; height:40px; object-fit:contain; filter: drop-shadow(0 0 1px #000); }
-.muted { opacity:.85; }
-
-.pwa-actions { display:flex; gap:.5rem; }
-.btn { background:#ffffff; color:rgb(0, 0, 0); border:none; padding:.5rem .75rem; border-radius:.5rem; cursor:pointer; }
-.btn:hover { filter:brightness(1.05); }
-.btn-outline { background:transparent; border:1px solid #60a5fa; color:#e2e8f0; }
-.btn-danger { background:#ffffff; }
-
-main { max-width: 1100px; margin: 1rem auto 4rem; padding: 0 1rem; }
-
-.card { background:#ffffff; border:1px solid #d1d5db; border-radius:.75rem; padding:1rem; margin-bottom:1rem; }
-.hint { font-size:.85rem; color:#9ca3af; }
-
-.grid { display:grid; gap:.75rem; }
-.g2 { grid-template-columns: 1fr 1fr; }
-.g4 { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 900px) { .g4 { grid-template-columns: 1fr 1fr; } .g2 { grid-template-columns: 1fr; } }
-
-label { display:flex; flex-direction:column; gap:.35rem; font-size:.9rem; }
-input[type="text"], input[type="number"], input[type="date"], textarea, select {
-  background: #f1f5f9;
-  color: #0b223a;
-  border: 1.5px solid #60a5fa;
-  border-radius: .6rem;
-  padding: .6rem .9rem;
-  font-size: 1rem;
-  transition: border .15s, box-shadow .15s;
-  box-shadow: 0 1px 4px 0 #0ea5e91a;
-}
-input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
-  border: 2px solid #0b5aa3;
-  outline: none;
-  box-shadow: 0 2px 8px 0 #0ea5e933;
+.section-header {
+    background-color: #d9d9d9;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    font-weight: bold;
 }
 
-.table-wrap { overflow:auto; border-radius:.5rem; }
-.check-table { width:100%; border-collapse: collapse; }
-.check-table th, .check-table td { border:1px solid #334155; padding:.5rem; font-size:.9rem; }
-.check-table thead th { background:#e5e7eb; text-align:left; }
-.w10 { width:10ch; text-align:center; }
-.w40 { width:18ch; }
-
-.check { display:flex; gap:.35rem; align-items:center; justify-content:center; }
-.check label { flex-direction:row; align-items:center; gap:.25rem; }
-
-.levels-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:.75rem; }
-.level { display:grid; grid-template-columns: 1fr 200px 200px; gap:.5rem; align-items:center; }
-@media (max-width: 800px) {
-  .level { grid-template-columns: 1fr; }
+.section-header.gray {
+    background-color: #d9d9d9;
 }
 
-.fotos-wrap { display:flex; flex-direction:column; gap:.75rem; }
-.fotos-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:.5rem; }
-.fotos-grid img { width:100%; height:120px; object-fit:cover; border:1px solid #334155; border-radius:.5rem; }
+.section-header h2 {
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    text-transform: uppercase;
+}
 
-.sign { background:#f8fafc; padding:.75rem; border-radius:.5rem; border:1px solid #cbd5e1; }
-canvas { background:white; border-radius:.5rem; }
+.instruction-text {
+    padding: 8px;
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    background-color: #f8f8f8;
+    font-style: italic;
+}
 
-.app-footer { text-align:center; color:#94a3b8; margin-bottom:2rem; }
+/* Tabelas */
+.equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
 
-.toast { position: fixed; bottom: 1rem; right: 1rem; background:#0b5aa3; color:white; padding:.75rem 1rem; border-radius:.5rem; box-shadow:0 10px 30px rgba(0,0,0,.4); }
+.equipment-table thead th {
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    padding: 8px 4px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.equipment-table tbody td {
+    border: 1px solid #000;
+    padding: 6px 4px;
+    vertical-align: top;
+}
+
+.item-col {
+    width: 50px;
+}
+
+.description-col {
+    width: auto;
+}
+
+.status-col {
+    width: 100px;
+}
+
+.item-number {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+.description {
+    padding: 6px 8px;
+}
+
+.description-text {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.sub-description {
+    font-size: 10px;
+    color: #555;
+    font-style: italic;
+}
+
+.description input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 11px;
+    padding: 2px;
+}
+
+.description input:focus {
+    background-color: #e6f3ff;
+}
+
+.status-cell {
+    text-align: center;
+    padding: 4px;
+}
+
+.status-cell select {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 10px;
+    text-align: center;
+    background: white;
+}
+
+.status-cell select:focus {
+    border-color: #0066cc;
+    outline: none;
+}
+
+/* Assinaturas: duas colunas com linhas e legendas centralizadas */
+.signatures-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+    gap: 40px;
+}
+
+.signature-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signature-line {
+    width: 70%;
+    border-bottom: 2px solid #000;
+    height: 10px; /* espaço vertical para parecer com linha de assinatura */
+    margin-bottom: 8px;
+}
+
+.signature-caption {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 4px;
+    color: #000;
+}
+
+/* Assinatura digital */
+.digital-signature-section {
+    border-top: 1px solid #ddd;
+    padding: 12px 20px 30px 20px;
+}
+
+.digital-signature-grid {
+    display: flex;
+    flex-direction: column; /* empilha os pads verticalmente */
+    gap: 20px;
+    align-items: center;
+    padding: 8px 20px;
+}
+
+.signature-pad {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signature-pad label {
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.signature-pad canvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    touch-action: none; /* evitar scroll no mobile enquanto desenha */
+    width: 100%;
+    max-width: 760px; /* limitar largura para impressão */
+    height: 150px; /* manter altura visual */
+}
+
+.signature-controls {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Botões de Ação */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #006633 0%, #004d26 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #004d26 0%, #003319 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,102,51,0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #666 0%, #555 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #555 0%, #444 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102,102,102,0.3);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ff9500 0%, #e68600 100%);
+    color: white;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #e68600 0%, #cc7700 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,149,0,0.3);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #006633 0%, #004d26 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.close {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ffcc00;
+}
+
+.modal-body {
+    padding: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* Estilos para assinaturas */
+.signature-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.signature-box {
+    border: 2px solid #006633;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.signature-box label {
+    font-weight: bold;
+    color: #006633;
+    margin-bottom: 15px;
+    display: block;
+    font-size: 16px;
+}
+
+.signature-field {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.name-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.name-input:focus {
+    border-color: #006633;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 102, 51, 0.3);
+}
+
+.digital-signature {
+    border: 2px solid #006633;
+    border-radius: 8px;
+    background: white;
+    padding: 10px;
+}
+
+.signature-canvas {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: crosshair;
+    display: block;
+    width: 100%;
+    height: 150px;
+    touch-action: none;
+}
+
+.signature-canvas:hover {
+    border-color: #006633;
+}
+
+.signature-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.btn-clear, .btn-save {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn-clear {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-clear:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Responsividade para assinaturas */
+@media (max-width: 768px) {
+    .signature-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .signature-canvas {
+        width: 100%;
+        height: 120px;
+    }
+    
+    .signature-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Ajustes para impressão */
+@media print {
+    .signature-section {
+        page-break-inside: avoid;
+    }
+    
+    .signature-box {
+        border: 2px solid #000;
+    }
+    
+    .signature-controls {
+        display: none;
+    }
+}
+
+/* Conteúdo da Prévia */
+.preview-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #006633;
+}
+
+.preview-section h4 {
+    color: #006633;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.preview-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.preview-field:last-child {
+    border-bottom: none;
+}
+
+.preview-field strong {
+    color: #333;
+    min-width: 150px;
+}
+
+.preview-field span {
+    color: #666;
+    text-align: right;
+    flex: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        min-height: auto;
+    }
+    
+    .form-header {
+        grid-template-columns: 80px 1fr 100px;
+        height: 70px;
+        font-size: 12px;
+    }
+    
+    .logo-um {
+        font-size: 18px;
+        padding: 6px 8px;
+    }
+    
+    .title-section h1 {
+        font-size: 14px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+    }
+    
+    .info-field:not(.wide) {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #000;
+    }
+    
+    .info-field:last-child {
+        border-bottom: none;
+    }
+    
+    .equipment-table {
+        font-size: 10px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-header {
+        grid-template-columns: 70px 1fr 90px;
+        height: 60px;
+    }
+    
+    .logo-um {
+        font-size: 14px;
+        padding: 4px 6px;
+    }
+    
+    .title-section h1 {
+        font-size: 12px;
+    }
+    
+    .equipment-table thead th,
+    .equipment-table tbody td {
+        padding: 4px 2px;
+        font-size: 9px;
+    }
+    
+    .status-col {
+        width: 80px;
+    }
+}
+
+/* Estados especiais */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.form-field-error {
+    border-color: #dc3545 !important;
+    background-color: #fff5f5 !important;
+}
+
+.form-field-success {
+    border-color: #28a745 !important;
+    background-color: #f8fff8 !important;
+}
+
+/* Estilos específicos para seções */
+.section-header.gray {
+    background-color: #e9ecef;
+}
+
+.description-text {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sub-description {
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Estilos para upload de fotos */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.photo-upload-area {
+    border: 2px dashed #006633;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-upload-area:hover {
+    border-color: #004d26;
+    background-color: #e9f5e9;
+}
+
+.photo-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.photo-icon {
+    font-size: 3em;
+    color: #006633;
+}
+
+.photo-text {
+    font-weight: bold;
+    color: #006633;
+    font-size: 1.1em;
+}
+
+.photo-input {
+    display: none;
+}
+
+.photo-preview {
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.photo-preview img {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.photo-filename {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+    word-break: break-all;
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .photo-upload-area {
+        min-height: 120px;
+        padding: 15px;
+    }
+    
+    .photo-icon {
+        font-size: 2.5em;
+    }
+    
+    .photo-text {
+        font-size: 1em;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        max-width: none;
+        margin: 0;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .modal {
+        display: none !important;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+    
+    .equipment-table {
+        font-size: 11px;
+    }
+    
+    .photo-upload-area {
+        border: 1px solid #ccc;
+    }
+}
+
+/* Regras adicionais para correspondência visual precisa na impressão */
+@media print {
+    /* Forçar todas as bordas visíveis como no app */
+    .form-header, .info-section, .section, .equipment-table, .signature-box, .photo-upload-area {
+        border-color: #000 !important;
+        background: #fff !important;
+    }
+
+    /* Inputs devem parecer caixas com contorno verde como no anexo */
+    input[type="text"], input[type="number"], input[type="date"], textarea {
+        border: 2px solid #51cf66 !important;
+        padding: 4px !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Campos com hint/label alinhados e separado por linhas pretas */
+    .info-row, .observation-box, .instruction-text {
+        border-bottom: 1px solid #000 !important;
+    }
+
+    /* Remover elementos interativos não necessários na impressão */
+    .btn, .photo-input, .signature-controls, .close, .modal, .action-buttons {
+        display: none !important;
+    }
+
+    /* Garantir que tabelas não quebrem linhas/linhas de item ao meio */
+    .equipment-table tr, .equipment-table td, .equipment-table th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Assinaturas: garantir espaço para linhas e imagens */
+    .signatures-grid, .digital-signature-grid {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .signature-line {
+        border-bottom: 2px solid #000 !important;
+        height: 14px !important;
+    }
+
+    /* Definir margens da página e escala para A4 */
+    @page {
+        size: A4;
+        margin: 12mm 10mm 12mm 10mm;
+    }
+
+    /* Garantir cores exatas em impressão */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Ajuste fino de fonte e espaçamento para coincidir com anexo */
+    .info-field label, .section-header h2, .title-section h1 {
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+
+    .info-field input[style*="text-transform: uppercase"], .tag-field input {
+        border: 2px solid #51cf66 !important;
+        padding: 6px !important;
+    }
+
+    /* Fotos: exibir pré-visualizações se presentes */
+    .photo-preview img {
+        display: block !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
